@@ -1,15 +1,12 @@
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import styles from './ContactForm.module.css';
-// import { connect } from 'react-redux';
-import contactsActions from '../../redux/actions';
+import contactsActions from '../../redux/contacts/actions';
+import { getContacts } from '../../redux/contacts/selector';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-
-  const getContacts = state => state.contacts.items;
 
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
@@ -88,12 +85,5 @@ const ContactForm = () => {
     </form>
   );
 };
-
-// const mapDispatchToProps = dispatch => ({
-//   onSubmit: (name, number) =>
-//     dispatch(contactsActions.addContact(name, number)),
-// });
-
-// export default connect(null, mapDispatchToProps)(ContactForm);
 
 export default ContactForm;
